@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+// Route::get('/', function () {
+//     //return view('home');
+// });
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('admin/', function () {
     return redirect('admin/item');

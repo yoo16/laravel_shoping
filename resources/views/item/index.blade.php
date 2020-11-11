@@ -17,7 +17,7 @@
           <h4 class="h4">商品名</h4>
           <a href="{{ route('item.show', ['id' => $item['id']]) }}">{{ $item['name'] }}</a>
           <h4 class="h4">価格</h4>
-          {{ $item['price'] }}
+          ¥{{ number_format($item['price']) }}
           <p>
           </p>
         </div>
