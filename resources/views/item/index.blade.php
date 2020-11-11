@@ -2,7 +2,6 @@
 
 @section('content')
 
-<h2>商品</h2>
 @if ($items)
 <div id="item-list" class="row">
 

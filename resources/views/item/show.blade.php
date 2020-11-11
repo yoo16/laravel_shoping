@@ -15,9 +15,12 @@
       ¥{{ number_format($item->value['price']) }}
     </div>
 
+    @guest
+    @else
     <div class="card-footer">
       <a href="{{ route('cart.add', ['id' => $item->value['id']]) }}" class="btn btn-outline-info">カートに入れる</a>
     </div>
+    @endguest
   </div>
 </div>
 @endsection

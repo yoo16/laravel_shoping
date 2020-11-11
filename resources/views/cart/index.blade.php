@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h2>商品</h2>
+<h2>カート</h2>
 @if ($cart_items)
 <div id="item-list" class="row">
 
@@ -30,6 +30,10 @@
   </div>
   @endforeach
 
+</div>
+@else
+<div class="alert alert-info">
+  カートが空です。
 </div>
 @endif
 

@@ -29,3 +29,10 @@ Route::group([], function () {
     Route::get('cart/remove/{id}', 'CartController@remove')->name('cart.remove');
     Route::get('cart/clear', 'CartController@clear_cart')->name('cart.clear');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
