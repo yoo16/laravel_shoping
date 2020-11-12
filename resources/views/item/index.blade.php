@@ -2,6 +2,19 @@
 
 @section('content')
 
+<div class="row mt-4 mb-4">
+  <div class="col-12">
+    <form action="">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="商品名">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit">検索</button>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
+
 @if ($items)
 <div id="item-list" class="row">
 
