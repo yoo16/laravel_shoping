@@ -15,8 +15,10 @@ Route::get('admin/', function () {
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('user', 'UserController@index');
     Route::get('user/create', 'UserController@create');
-    Route::get('item', 'ItemController@index');
-    Route::get('item/create', 'ItemController@create');
+
+    Route::get('item', 'ItemController@index')->name('admin.item');
+    Route::get('item/show/{id}', 'ItemController@show')->name('admin.item.show');
+    Route::get('item/create', 'ItemController@create')->name('admin.item.create');
 });
 
 Route::group([], function () {
@@ -30,9 +32,6 @@ Route::group([], function () {
     Route::get('cart/remove/{id}', 'CartController@remove')->name('cart.remove');
     Route::get('cart/clear', 'CartController@clear_cart')->name('cart.clear');
 });
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
