@@ -9,7 +9,7 @@ class Item extends Model
 {
     use HasFactory;
 
-    function getList()
+    public function getList()
     {
         $items = [
             [ 'id' => 1, 'name' => 'Chromebook', 'price' => 29800, ],
@@ -22,7 +22,7 @@ class Item extends Model
         return $items;
     }
 
-    function fetch($id)
+    public function fetch($id)
     {
         $items = $this->getList();
         foreach ($items as $item) {
@@ -32,4 +32,5 @@ class Item extends Model
             }
         }
     }
+
 }

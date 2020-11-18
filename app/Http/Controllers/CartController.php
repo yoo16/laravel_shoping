@@ -53,4 +53,33 @@ class CartController extends Controller
         return redirect()->route('cart');
     }
 
+    public function confirm(Request $request)
+    {
+        //購入一覧
+        $cart_items = Session::get('cart_items');
+        $data = ['cart_items' => $cart_items];
+
+        //クレジットカード情報取得（外部）
+
+        return redirect()->route('cart.complete');
+    }
+
+    public function purchase(Request $request)
+    {
+        //購入処理
+        //決済処理
+        //失敗の場合、確認に戻る
+        //メール送信
+
+        return redirect()->route('cart.complete');
+    }
+
+    public function complete(Request $request)
+    {
+        //セッションクリア
+        return view('cart.complete');
+    }
+
+
+
 }

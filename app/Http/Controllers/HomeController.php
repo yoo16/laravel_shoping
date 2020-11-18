@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\UserItem;
+use App\Models\Information;
 
 class HomeController extends Controller
 {
@@ -24,9 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $item = new Item();
-        $item->fetch(1);
-        $data = compact('item', $item);
+        $user_item = new UserItem();
+        $user_items = $user_item->getList();
+
+        $information = new Information();
+        $informations = $information->getList();
+
+        $data = compact(['informations', 'user_items']);
+
         return view('home', $data);
     }
 }

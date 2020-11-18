@@ -26,4 +26,11 @@ class ItemController extends Controller
         return view('item.show', $data);
     }
 
+    public function search(Request $request)
+    {
+        $item = new Item();
+        $item->fetch($request->id);
+        $data = compact('item', $item);
+        return view('item.show', $data);
+    }
 }
