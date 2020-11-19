@@ -12,7 +12,11 @@ class CartController extends Controller
     public function index()
     {
         $cart_items = Session::get('cart_items');
-        $data = ['cart_items' => $cart_items];
+        $total_price = 1200;
+        $data = [
+            'cart_items' => $cart_items,
+            'total_price' => $total_price
+        ];
         return view('cart.index', $data);
     }
     
@@ -57,11 +61,15 @@ class CartController extends Controller
     {
         //購入一覧
         $cart_items = Session::get('cart_items');
-        $data = ['cart_items' => $cart_items];
+        $total_price = 1200;
+        $data = [
+            'cart_items' => $cart_items,
+            'total_price' => $total_price
+        ];
 
         //クレジットカード情報取得（外部）
 
-        return redirect()->route('cart.complete');
+        return view('cart.confirm', $data);
     }
 
     public function purchase(Request $request)

@@ -2,7 +2,21 @@
 
 @section('content')
 
-<h2>カート</h2>
+<h2 class="h2">ショッピングカート</h2>
+<div class="card">
+  <div class="card-header">
+    <h3 class="h3">小計</h3>
+  </div>
+  <div class="card-body">
+    <p>
+      ¥ {{ number_format($total_price) }}（税込）
+    </p>
+  </div>
+  <div class="card-footer">
+    <a href="{{ route('cart.confirm') }}" class="btn btn-block btn-success">レジに進む</a>
+  </div>
+</div>
+
 @if ($cart_items)
 <div id="item-list" class="row">
 
@@ -15,16 +29,25 @@
 
       <div class="card-body">
         <div class="detail">
-          <h4 class="h4">商品名</h4>
-          <a href="{{ route('item.show', ['id' => $cart_item['id']]) }}">{{ $cart_item['name'] }}</a>
-          <h4 class="h4">価格</h4>
-          {{ $cart_item['price'] }}
+          <p>
+            <a href="{{ route('item.show', ['id' => $cart_item['id']]) }}">{{ $cart_item['name'] }}</a>
+            ¥{{ number_format($cart_item['price']) }}
+          </p>
+          <div class="form-inline">
+            <label for="">数量</label>
+            &nbsp;
+            <select name="amount" class="form-control col-2">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="3">4</option>
+              <option value="3">5</option>
+            </select>
+          </div>
         </div>
       </div>
-      <div class="cart-footer text-center">
-        <p>
-          <a href="{{ route('cart.remove', ['id' => $index]) }}" class="btn btn-danger">カートから削除</a>
-        </p>
+      <div class="cart-footer text-center p-2">
+        <a href="{{ route('cart.remove', ['id' => $index]) }}" class="btn btn-danger">カートから削除</a>
       </div>
     </div>
   </div>

@@ -31,8 +31,8 @@ Route::group([], function () {
     Route::get('cart/add/{id}', 'CartController@add')->name('cart.add');
     Route::get('cart/remove/{id}', 'CartController@remove')->name('cart.remove');
     Route::get('cart/clear', 'CartController@clear_cart')->name('cart.clear');
-    Route::post('cart/confirm', 'CartController@confirm')->name('cart.confirm');
-    Route::post('cart/parchase', 'CartController@parchase')->name('cart.parchase');
+    Route::get('cart/confirm', 'CartController@confirm')->name('cart.confirm');
+    Route::post('cart/purchase', 'CartController@purchase')->name('cart.purchase');
     Route::get('cart/complete', 'CartController@complete')->name('cart.complete');
 });
 
