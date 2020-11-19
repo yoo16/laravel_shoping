@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Item;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -12,7 +13,8 @@ class CartController extends Controller
     public function index()
     {
         $cart_items = Session::get('cart_items');
-        $total_price = 1200;
+        $cart = new Cart();
+        $total_price = $cart->calculate($cart_items);
         $data = [
             'cart_items' => $cart_items,
             'total_price' => $total_price
@@ -61,7 +63,8 @@ class CartController extends Controller
     {
         //購入一覧
         $cart_items = Session::get('cart_items');
-        $total_price = 1200;
+        $cart = new Cart();
+        $total_price = $cart->calculate($cart_items);
         $data = [
             'cart_items' => $cart_items,
             'total_price' => $total_price
