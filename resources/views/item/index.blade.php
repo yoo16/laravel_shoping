@@ -4,9 +4,9 @@
 
 <div class="row mt-4 mb-4">
   <div class="col-12">
-    <form action="">
+    <form action="" method="get">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="商品名">
+        <input type="text" class="form-control" name="search" placeholder="商品名">
         <span class="input-group-btn">
           <button class="btn btn-default" type="submit">検索</button>
         </span>
