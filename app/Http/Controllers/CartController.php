@@ -10,13 +10,19 @@ use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
-    public function index()
+    public $cart_items;
+
+    public function __construct()
     {
-        $cart_items = Session::get('cart_items');
+    }
+
+    public function index(Request $request)
+    {
+        $cart_items = view()->shared('cart_items');
+
         $cart = new Cart();
         $total_price = $cart->calculate($cart_items);
         $data = [
-            'cart_items' => $cart_items,
             'total_price' => $total_price
         ];
         return view('cart.index', $data);
@@ -43,7 +49,7 @@ class CartController extends Controller
 
         Session::push('cart_items', $item->value);
 
-        return redirect()->route('item.show', ['id' => $request->id]);
+        return redirect()->route('item');
     }
 
     public function remove(Request $request)
@@ -51,7 +57,8 @@ class CartController extends Controller
         $item = new Item();
         $item->fetch($request->id);
 
-        $cart_items = Session::get('cart_items');
+        //TODO
+        $cart_items = view()->shared('cart_items');
         unset($cart_items[$request->id]);
         session(['cart_items' => $cart_items]);
         $cart_items = Session::get('cart_items');
@@ -62,7 +69,8 @@ class CartController extends Controller
     public function confirm(Request $request)
     {
         //購入一覧
-        $cart_items = Session::get('cart_items');
+        //TODO
+        $cart_items = view()->shared('cart_items');
         $cart = new Cart();
         $total_price = $cart->calculate($cart_items);
         $data = [
@@ -88,6 +96,7 @@ class CartController extends Controller
     public function complete(Request $request)
     {
         //セッションクリア
+        Session::forget('cart_items');
         return view('cart.complete');
     }
 

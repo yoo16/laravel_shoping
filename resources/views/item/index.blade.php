@@ -30,8 +30,11 @@
           <h4 class="h4">商品名</h4>
           <a href="{{ route('item.show', ['id' => $item['id']]) }}">{{ $item['name'] }}</a>
           <h4 class="h4">価格</h4>
-          ¥{{ number_format($item['price']) }}
           <p>
+          ¥{{ number_format($item['price']) }}
+          </p>
+          <p class="text-center">
+            <a href="{{ route('cart.add', ['id' => $item['id']]) }}" class="btn btn-outline-info">カートに入れる</a>
           </p>
         </div>
       </div>
