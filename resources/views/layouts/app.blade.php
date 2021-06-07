@@ -23,7 +23,7 @@
 
 <body>
   <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar navbar-dark bg-dark shadow-sm">
       <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
           Shopping
@@ -42,24 +42,19 @@
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ml-auto">
             <!-- Authentication Links -->
-            @guest
-            @if (Route::has('item'))
             <li class="nav-item">
               <a class="nav-link" href="{{ route('item') }}">商品</a>
             </li>
-            @endif
 
-            @if (Route::has('login'))
+            @guest
             <li class="nav-item">
               <a class="nav-link" href="{{ route('login') }}">ログイン</a>
             </li>
-            @endif
 
-            @if (Route::has('register'))
             <li class="nav-item">
               <a class="nav-link" href="{{ route('register') }}">新規会員登録</a>
             </li>
-            @endif
+
             @else
             <li class="nav-item dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"

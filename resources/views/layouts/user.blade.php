@@ -23,7 +23,7 @@
 </head>
 
 <body>
-  @include('components.main-menu')
+  @include('components.main_menu')
 
   <div class="container">
     @yield('content')
